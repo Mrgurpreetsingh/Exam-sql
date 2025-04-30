@@ -127,3 +127,8 @@ ORDER BY a.nom, f.titre;
 15-
 
 
+
+
+
+(17 - les films sans roles = les films sans acteurs)
+
