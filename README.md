@@ -100,6 +100,30 @@ ORDER BY a.nom, f.titre; -->order optionnel
 
 13-Titre des films de Quentin Tarantino dans lesquels il n’a pas
 joué
-13)
+13)SELECT f.titre
+FROM film f
+JOIN artiste a ON f.idRéalisateur = a.idArtiste
+WHERE a.nom = 'Tarantino' AND a.prénom = 'Quentin'
+AND f.idFilm NOT IN (
+    SELECT r.idFilm
+    FROM role r
+    WHERE r.idActeur = a.idArtiste
+)
+ORDER BY f.titre;
+
+14-Quel metteur en scène a tourné ́en tant qu’acteur ? Donner le
+nom, le rôle et le titre des films dans lesquels cet artiste a joué.
+14)SELECT DISTINCT a.nom, a.prénom, r.nomRôle, f.titre
+FROM role r
+JOIN film f ON r.idFilm = f.idFilm
+JOIN artiste a ON r.idActeur = a.idArtiste
+WHERE a.idArtiste IN (
+    SELECT f.idRéalisateur
+    FROM film f
+)
+ORDER BY a.nom, f.titre;
+
+
+15-
 
 
