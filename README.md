@@ -186,6 +186,8 @@ WHERE a.idArtiste NOT IN (
 FROM notation n
 JOIN film f ON n.idFilm = f.idFilm
 WHERE f.titre = 'Memento';
+
+
 ![reponse 20](https://github.com/user-attachments/assets/f14aa1c9-12dc-4e99-81d9-99292458939a)
 
 21- id, nom et prénom des réalisateurs, et nombre de films qu’ils
