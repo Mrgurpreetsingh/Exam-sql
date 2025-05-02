@@ -201,6 +201,23 @@ JOIN film f ON a.idArtiste = f.idRéalisateur
 GROUP BY a.idArtiste;
 
 
+22-Nom et prénom des réalisateurs qui ont tourné au moins deux
+films. 
+
+22)SELECT a.nom, a.prénom
+FROM artiste a
+JOIN film f ON a.idArtiste = f.idRéalisateur
+GROUP BY a.idArtiste
+HAVING COUNT(f.idFilm) >= 2
+ORDER BY a.nom, a.prénom; 
+
+23-Quels films ont une moyenne des notes supérieure à 7
+23)SELECT f.titre, AVG(n.note) AS moyenne
+FROM film f
+JOIN notation n ON f.idFilm = n.idFilm
+GROUP BY f.titre
+HAVING AVG(n.note) > 7;
+
 
 
 
