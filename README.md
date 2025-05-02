@@ -124,8 +124,22 @@ WHERE a.idArtiste IN (
 ORDER BY a.nom, f.titre;
 
 
-15-
-
+15-Exo 15 Donnez les films de Hitchcock sans James Stewart
+15)SELECT f.titre
+FROM Film f
+JOIN Artiste a ON f.idRéalisateur = a.idArtiste
+WHERE a.nom = 'Hitchcock'
+  AND NOT EXISTS (
+    SELECT 1
+    FROM Role r
+    JOIN Artiste a2 ON r.idActeur = a2.idArtiste
+    WHERE r.idFilm = f.idFilm
+      AND a2.nom = 'Stewart'
+  )
+16-Exo 16 Dans quels films le réalisateur a-t-il le même prénom que l’un
+des interprètes ? (titre, nom du réalisateur, nom de l’interprète). Le
+réalisateur et l’interprète ne doivent pas être la même personne.
+16)
 
 
 
