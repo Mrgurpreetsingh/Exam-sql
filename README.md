@@ -29,6 +29,7 @@ FROM film f
 JOIN artiste a ON f.idRéalisateur = a.idArtiste
 WHERE f.titre = 'Memento';
 
+-->sélectionne le nom et prénom de l'artiste de memento .
 
 ![reponse 4](https://github.com/user-attachments/assets/f7fed55f-d025-40af-9bc2-b80f59f17e13)
 5-Quelles sont les notes obtenues par le film Fargo
