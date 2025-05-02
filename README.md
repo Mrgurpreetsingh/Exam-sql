@@ -190,8 +190,16 @@ WHERE f.titre = 'Memento';
 
 ![reponse 20](https://github.com/user-attachments/assets/f14aa1c9-12dc-4e99-81d9-99292458939a)
 
+
+
 21- id, nom et prénom des réalisateurs, et nombre de films qu’ils
 ont tournés.
+
+21)SELECT a.idArtiste, a.nom, a.prénom, COUNT(f.idFilm) AS nb_films
+FROM artiste a
+JOIN film f ON a.idArtiste = f.idRéalisateur
+GROUP BY a.idArtiste;
+
 
 
 
