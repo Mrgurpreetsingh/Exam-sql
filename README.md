@@ -139,10 +139,61 @@ WHERE a.nom = 'Hitchcock'
 16-Exo 16 Dans quels films le réalisateur a-t-il le même prénom que l’un
 des interprètes ? (titre, nom du réalisateur, nom de l’interprète). Le
 réalisateur et l’interprète ne doivent pas être la même personne.
-16)
+16)SELECT 
+    f.titre, 
+    a1.nom AS nom_realisateur, 
+    a1.prénom AS prénom_realisateur,
+    a2.nom AS nom_acteur, 
+    a2.prénom AS prénom_acteur
+FROM Film f
+JOIN Artiste a1 ON f.idRéalisateur = a1.idArtiste
+JOIN Role r ON f.idFilm = r.idFilm
+JOIN Artiste a2 ON r.idActeur = a2.idArtiste
+WHERE a1.prénom = a2.prénom
+  AND a1.idArtiste != a2.idArtiste;
+
+![reponse 16](https://github.com/user-attachments/assets/ab68ea1e-075e-432c-a7d2-84343405155e)
+
+
+17-Les films sans rôle
+17)SELECT titre
+FROM film
+WHERE idFilm NOT IN  (SELECT idFilm  FROM role);
+![reponse 17](https://github.com/user-attachments/assets/5483ebbc-8b56-4332-adbd-c85fb5e583bb)
+
+18-Quelles sont les films non notés par l'internaute Prénom1 Nom1
+18)SELECT titre
+FROM film
+WHERE idFilm NOT IN (
+  SELECT idFilm FROM notation
+  WHERE email = 'prenom1.nom1@example.com'
+);
+
+
+19-Quels acteurs n’ont jamais réalisé de film ?
+19)SELECT DISTINCT a.nom, a.prénom
+FROM artiste a
+JOIN role r ON a.idArtiste = r.idActeur
+WHERE a.idArtiste NOT IN (
+  SELECT idRéalisateur FROM film
+);
+![reponse 19](https://github.com/user-attachments/assets/dedeeaff-5054-4e8f-aea7-fb3c39365af3)
+
+
+20-Quelle est la moyenne des notes de Memento
+
+20)SELECT AVG(note) AS moyenne
+FROM notation n
+JOIN film f ON n.idFilm = f.idFilm
+WHERE f.titre = 'Memento';
+![reponse 20](https://github.com/user-attachments/assets/f14aa1c9-12dc-4e99-81d9-99292458939a)
+
+21- id, nom et prénom des réalisateurs, et nombre de films qu’ils
+ont tournés.
 
 
 
 
-(17 - les films sans roles = les films sans acteurs)
+
+
 
