@@ -1,9 +1,10 @@
 # Exam-sql
 
 1-Nom et année de naissance des artistes nés avant 1950.
-1) Nom et année de naissanceSELECT nom, annéeNaiss
+1) Nom et année de naissance
+ SELECT  *
 FROM artiste
-WHERE annéeNaiss < 1950 ;
+WHERE annéeNaiss < 1950;
 
 2-Titre de tous les drames.
 2) SELECT titre
@@ -16,7 +17,8 @@ ORDER BY titre;  --> Pas besoin du Order BY titre c'est que visuel
 FROM role
 JOIN artiste ON role.idActeur = artiste.idArtiste
 WHERE artiste.nom = 'Willis' AND artiste.prénom = 'Bruce';
-
+--> join relie les 2 tables 
+--> where filtre le nom et le prenom
 
 
 
